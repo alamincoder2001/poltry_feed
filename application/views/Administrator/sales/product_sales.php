@@ -642,12 +642,12 @@
 					return;
 				}
 
-				if (product.quantity > this.productStock && this.sales.isService == 'false') {
+				if (parseFloat(product.quantity) > parseFloat(this.productStock) && this.sales.isService == 'false') {
 					alert('Stock unavailable');
 					return;
 				}
 
-				let cartInd = this.cart.findIndex(p => p.productId == product.productId);
+				let cartInd = this.cart.findIndex(p => p.productId == product.productId && p.batch_no == product.batch_no);
 				if (cartInd > -1) {
 					this.cart.splice(cartInd, 1);
 				}
