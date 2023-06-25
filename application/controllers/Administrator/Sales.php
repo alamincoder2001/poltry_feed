@@ -1791,11 +1791,6 @@ class Sales extends CI_Controller
     }
 
 
-
-
-
-
-
     //     public function product_delete($id = null){
     //       // $id = $this->input->post('deleted');
     //        // $id = $this->input->post('SaleDetails_SlNo');
@@ -1949,7 +1944,7 @@ class Sales extends CI_Controller
         $res = $this->db->query("SELECT pd.* FROM tbl_purchasedetails pd WHERE pd.PurchaseDetails_branchID = '$this->sbrunch' AND pd.Status = 'a' AND pd.Batch_No = '$data->batchNo'")->row();
         if (!empty($res)) {
             echo json_encode(['status' => true, 'msg' => "Already exists this batch"]);
-        }else{
+        } else {
             echo json_encode(['status' => false]);
         }
     }
