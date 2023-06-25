@@ -514,15 +514,16 @@ class Purchase extends CI_Controller
 
             foreach($data->cartProducts as $product){
                 $purchaseDetails = array(
-                    'PurchaseMaster_IDNo' => $purchaseId,
-                    'Product_IDNo' => $product->productId,
+                    'PurchaseMaster_IDNo'           => $purchaseId,
+                    'Product_IDNo'                  => $product->productId,
+                    'Batch_No'                      => $product->batch_no,
                     'PurchaseDetails_TotalQuantity' => $product->quantity,
-                    'PurchaseDetails_Rate' => $product->purchaseRate,
-                    'PurchaseDetails_TotalAmount' => $product->total,
-                    'Status' => 'a',
-                    'AddBy' => $this->session->userdata("FullName"),
-                    'AddTime' => date('Y-m-d H:i:s'),
-                    'PurchaseDetails_branchID' => $this->session->userdata('BRANCHid')
+                    'PurchaseDetails_Rate'          => $product->purchaseRate,
+                    'PurchaseDetails_TotalAmount'   => $product->total,
+                    'Status'                        => 'a',
+                    'AddBy'                         => $this->session->userdata("FullName"),
+                    'AddTime'                       => date('Y-m-d H:i:s'),
+                    'PurchaseDetails_branchID'      => $this->session->userdata('BRANCHid')
                 );
 
                 $this->db->insert('tbl_purchasedetails', $purchaseDetails);
@@ -654,15 +655,16 @@ class Purchase extends CI_Controller
 
             foreach($data->cartProducts as $product){
                 $purchaseDetails = array(
-                    'PurchaseMaster_IDNo' => $purchaseId,
-                    'Product_IDNo' => $product->productId,
+                    'PurchaseMaster_IDNo'           => $purchaseId,
+                    'Product_IDNo'                  => $product->productId,
+                    'Batch_No'                      => $product->batch_no,
                     'PurchaseDetails_TotalQuantity' => $product->quantity,
-                    'PurchaseDetails_Rate' => $product->purchaseRate,
-                    'PurchaseDetails_TotalAmount' => $product->total,
-                    'Status' => 'a',
-                    'UpdateBy' => $this->session->userdata("FullName"),
-                    'UpdateTime' => date('Y-m-d H:i:s'),
-                    'PurchaseDetails_branchID' => $this->session->userdata('BRANCHid')
+                    'PurchaseDetails_Rate'          => $product->purchaseRate,
+                    'PurchaseDetails_TotalAmount'   => $product->total,
+                    'Status'                        => 'a',
+                    'UpdateBy'                      => $this->session->userdata("FullName"),
+                    'UpdateTime'                    => date('Y-m-d H:i:s'),
+                    'PurchaseDetails_branchID'      => $this->session->userdata('BRANCHid')
                 );
 
                 $this->db->insert('tbl_purchasedetails', $purchaseDetails);

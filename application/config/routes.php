@@ -554,6 +554,10 @@ $route['update_investment_account'] = 'Administrator/Invest/updateInvestmentAcco
 $route['delete_investment_account'] = 'Administrator/Invest/deleteInvestmentAccount';
 $route['get_investment_accounts'] = 'Administrator/Invest/getInvestmentAccounts';
 
+// get batch
+$route['get_batch'] = 'Administrator/Sales/getBatch';
+$route['check_batch'] = 'Administrator/Sales/checkBatch';
+
 
 //mother api content
 $route['get_mother_api_content'] = 'Administrator/Page/getMotherApiContent';

@@ -8,13 +8,13 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	
-  	'username' => 'dewbxcak_admin4',
-  	'password' => '(h-BfA?6WM)Z',
-  	'database' => 'dewbxcak_mother',
+  	// 'username' => 'dewbxcak_admin4',
+  	// 'password' => '(h-BfA?6WM)Z',
+  	// 'database' => 'dewbxcak_mother',
 	
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => 'mother_v4',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'poultry_feed',
 		
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
