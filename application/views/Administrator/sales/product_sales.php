@@ -602,7 +602,6 @@
 			},
 			onChangeBatch(){
 				this.productStock = this.selectedBatch.stock;
-				this.productStockText = this.productStock > 0 ? "Available Stock" : "Stock Unavailable";
 				this.$refs.quantity.focus();
 			},
 			toggleProductPurchaseRate() {
