@@ -652,7 +652,7 @@
 					this.cart.splice(cartInd, 1);
 				}
 
-				this.cart.unshift(product);
+				this.cart.push(product);
 				this.clearProduct();
 				this.calculateTotal();
 			},
