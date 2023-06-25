@@ -674,6 +674,8 @@
 				}
 				this.productStock = '';
 				this.productStockText = '';
+				this.batches = [];
+				this.selectedBatch = null
 			},
 			calculateTotal() {
 				this.sales.subTotal = this.cart.reduce((prev, curr) => {
