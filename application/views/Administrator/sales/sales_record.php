@@ -214,7 +214,9 @@
 							<th>Paid</th>
 							<th>Due</th>
 							<th>Note</th>
-							<th>Status</th>
+							<?php if ($this->session->userdata('accountType') != 'u') { ?>
+								<th>Status</th>
+							<?php } ?>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -233,10 +235,12 @@
 							<td style="text-align:right;">{{ sale.SaleMaster_PaidAmount }}</td>
 							<td style="text-align:right;">{{ sale.SaleMaster_DueAmount }}</td>
 							<td style="text-align:left;">{{ sale.SaleMaster_Description }}</td>
-							<td style="text-align: center;">
-								<button @click="Changestatus(sale.SaleMaster_SlNo)" style="border: 0;border-bottom-left-radius: 15px; border-top-right-radius: 15px; padding: 2px 10px; font-style: italic; color: #ff1111;" v-if="sale.checkStatus == 'p'">Approve</button>
-								<p v-else style="margin: 0;color:green;font-weight:bold;font-style:italic;">Approved</p>
-							</td>
+							<?php if ($this->session->userdata('accountType') != 'u') { ?>
+								<td style="text-align: center;">
+									<button @click="Changestatus(sale.SaleMaster_SlNo)" style="border: 0;border-bottom-left-radius: 15px; border-top-right-radius: 15px; padding: 2px 10px; font-style: italic; color: #ff1111;" v-if="sale.checkStatus == 'p'">Approve</button>
+									<p v-else style="margin: 0;color:green;font-weight:bold;font-style:italic;">Approved</p>
+								</td>
+							<?php } ?>
 							<td style="text-align:center;">
 								<a href="" title="Sale Invoice" v-bind:href="`/sale_invoice_print/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file"></i></a>
 								<a href="" title="Chalan" v-bind:href="`/chalan/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file-o"></i></a>
@@ -258,7 +262,9 @@
 							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_PaidAmount)}, 0) }}</td>
 							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_DueAmount)}, 0) }}</td>
 							<td></td>
-							<td></td>
+							<?php if ($this->session->userdata('accountType') != 'u') { ?>
+								<td></td>
+							<?php } ?>
 							<td></td>
 						</tr>
 					</tfoot>
