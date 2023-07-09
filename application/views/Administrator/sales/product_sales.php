@@ -594,13 +594,15 @@
 					this.productStockText = this.productStock > 0 ? "Available Stock" : "Stock Unavailable";
 				}
 
-				axios.post('/get_batch', {productId: this.selectedProduct.Product_SlNo}).then(res => {
+				axios.post('/get_batch', {
+					productId: this.selectedProduct.Product_SlNo
+				}).then(res => {
 					this.batches = res.data;
 					this.selectedBatch = null;
 				})
 
 			},
-			onChangeBatch(){
+			onChangeBatch() {
 				this.productStock = this.selectedBatch.stock;
 				this.$refs.quantity.focus();
 			},
@@ -609,22 +611,21 @@
 				this.$refs.productPurchaseRate.type = this.$refs.productPurchaseRate.type == 'text' ? 'password' : 'text';
 			},
 			addToCart() {
-				let product = {
-					productId: this.selectedProduct.Product_SlNo,
-					productCode: this.selectedProduct.Product_Code,
-					categoryName: this.selectedProduct.ProductCategory_Name,
-					name: this.selectedProduct.Product_Name,
-					salesRate: this.selectedProduct.Product_SellingPrice,
-					vat: this.selectedProduct.vat,
-					quantity: this.selectedProduct.quantity,
-					batch_no: this.selectedBatch.Batch_No,
-					total: this.selectedProduct.total,
-					purchaseRate: this.selectedProduct.Product_Purchase_Rate
-				}
-
 				if (this.selectedBatch == null) {
 					alert("Batch required");
 					return
+				}
+				let product = {
+					productId   : this.selectedProduct.Product_SlNo,
+					productCode : this.selectedProduct.Product_Code,
+					categoryName: this.selectedProduct.ProductCategory_Name,
+					name        : this.selectedProduct.Product_Name,
+					salesRate   : this.selectedProduct.Product_SellingPrice,
+					vat         : this.selectedProduct.vat,
+					quantity    : this.selectedProduct.quantity,
+					batch_no    : this.selectedBatch.Batch_No,
+					total       : this.selectedProduct.total,
+					purchaseRate: this.selectedProduct.Product_Purchase_Rate
 				}
 
 				if (product.productId == '') {
@@ -806,15 +807,15 @@
 
 					r.saleDetails.forEach(product => {
 						let cartProduct = {
-							productCode : product.Product_Code,
-							productId   : product.Product_IDNo,
-							batch_no    : product.Batch_No,
+							productCode: product.Product_Code,
+							productId: product.Product_IDNo,
+							batch_no: product.Batch_No,
 							categoryName: product.ProductCategory_Name,
-							name        : product.Product_Name,
-							salesRate   : product.SaleDetails_Rate,
-							vat         : product.SaleDetails_Tax,
-							quantity    : product.SaleDetails_TotalQuantity,
-							total       : product.SaleDetails_TotalAmount,
+							name: product.Product_Name,
+							salesRate: product.SaleDetails_Rate,
+							vat: product.SaleDetails_Tax,
+							quantity: product.SaleDetails_TotalQuantity,
+							total: product.SaleDetails_TotalAmount,
 							purchaseRate: product.Purchase_Rate,
 						}
 
