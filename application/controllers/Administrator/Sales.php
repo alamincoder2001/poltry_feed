@@ -1908,6 +1908,21 @@ class Sales extends CI_Controller
         echo json_encode($res);
     }
 
+    public function updateStatus()
+    {
+        $data = json_decode($this->input->raw_input_stream);
+
+        $sales = array(
+            'checkStatus' => 'a'
+        );
+
+        $this->db->where('SaleMaster_SlNo', $data->saleId);
+        $this->db->update('tbl_salesmaster', $sales);
+
+        $res = ['success' => true, 'message' => 'Status Approved Successful'];
+        echo json_encode($res);
+    }
+
     public function getBatch()
     {
         $data = json_decode($this->input->raw_input_stream);

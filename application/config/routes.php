@@ -239,6 +239,7 @@ $route['get_sale_return_details'] = 'Administrator/Sales/getSaleReturnDetails';
 $route['sale_return_invoice/(:any)'] = 'Administrator/Sales/saleReturnInvoice/$1';
 $route['sale_return_details'] = 'Administrator/Sales/saleReturnDetails';
 $route['check_sale_return/(:any)'] = 'Administrator/Sales/checkSaleReturn/$1';
+$route['update_status'] = 'Administrator/Sales/updateStatus';
 
 $route['sale_invoice_print/(:any)'] = 'Administrator/Sales/saleInvoicePrint/$1';
 $route['craditlimit'] = 'Administrator/Sales/craditlimit/';
