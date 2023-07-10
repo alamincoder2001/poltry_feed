@@ -162,7 +162,8 @@ class Sales extends CI_Controller
                     'Status' => 'a',
                     'AddBy' => $this->session->userdata("FullName"),
                     'AddTime' => date('Y-m-d H:i:s'),
-                    'SaleDetails_BranchId' => $this->session->userdata('BRANCHid')
+                    'SaleDetails_BranchId' => $this->session->userdata('BRANCHid'),
+                    'current_stock' => $this->mt->productStock($cartProduct->productId) - $cartProduct->quantity,
                 );
 
                 $this->db->insert('tbl_saledetails', $saleDetails);
@@ -452,18 +453,19 @@ class Sales extends CI_Controller
 
             foreach ($data->cart as $cartProduct) {
                 $saleDetails = array(
-                    'SaleMaster_IDNo' => $salesId,
-                    'Product_IDNo' => $cartProduct->productId,
-                    'Batch_No' => $cartProduct->batch_no,
+                    'SaleMaster_IDNo'           => $salesId,
+                    'Product_IDNo'              => $cartProduct->productId,
+                    'Batch_No'                  => $cartProduct->batch_no,
                     'SaleDetails_TotalQuantity' => $cartProduct->quantity,
-                    'Purchase_Rate' => $cartProduct->purchaseRate,
-                    'SaleDetails_Rate' => $cartProduct->salesRate,
-                    'SaleDetails_Tax' => $cartProduct->vat,
-                    'SaleDetails_TotalAmount' => $cartProduct->total,
-                    'Status' => 'a',
-                    'AddBy' => $this->session->userdata("FullName"),
-                    'AddTime' => date('Y-m-d H:i:s'),
-                    'SaleDetails_BranchId' => $this->session->userdata("BRANCHid")
+                    'Purchase_Rate'             => $cartProduct->purchaseRate,
+                    'SaleDetails_Rate'          => $cartProduct->salesRate,
+                    'SaleDetails_Tax'           => $cartProduct->vat,
+                    'SaleDetails_TotalAmount'   => $cartProduct->total,
+                    'Status'                    => 'a',
+                    'AddBy'                     => $this->session->userdata("FullName"),
+                    'AddTime'                   => date('Y-m-d H:i:s'),
+                    'SaleDetails_BranchId'      => $this->session->userdata("BRANCHid"),
+                    'current_stock'             => $this->mt->productStock($cartProduct->productId) - $cartProduct->quantity,
                 );
 
                 $this->db->insert('tbl_saledetails', $saleDetails);

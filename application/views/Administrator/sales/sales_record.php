@@ -151,6 +151,7 @@
 							<th>Product Name</th>
 							<th>Price</th>
 							<th>Quantity</th>
+							<th>Current Stock</th>
 							<th>Total</th>
 							<th>Action</th>
 						</tr>
@@ -166,6 +167,7 @@
 								<td>{{ sale.saleDetails[0].Product_Name }}</td>
 								<td style="text-align:right;">{{ sale.saleDetails[0].SaleDetails_Rate }}</td>
 								<td style="text-align:center;">{{ sale.saleDetails[0].SaleDetails_TotalQuantity }}</td>
+								<td style="text-align:center;">{{ sale.saleDetails[0].current_stock }}</td>
 								<td style="text-align:right;">{{ sale.saleDetails[0].SaleDetails_TotalAmount }}</td>
 								<td style="text-align:center;">
 									<a href="" title="Sale Invoice" v-bind:href="`/sale_invoice_print/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file"></i></a>
@@ -181,13 +183,14 @@
 								<td>{{ product.Product_Name }}</td>
 								<td style="text-align:right;">{{ product.SaleDetails_Rate }}</td>
 								<td style="text-align:center;">{{ product.SaleDetails_TotalQuantity }}</td>
+								<td style="text-align:center;">{{ product.current_stock }}</td>
 								<td style="text-align:right;">{{ product.SaleDetails_TotalAmount }}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight:bold;">
 								<td colspan="7" style="font-weight:normal;"><strong>Note: </strong>{{ sale.SaleMaster_Description }}</td>
 								<td style="text-align:center;">Total Quantity<br>{{ sale.saleDetails.reduce((prev, curr) => {return prev + parseFloat(curr.SaleDetails_TotalQuantity)}, 0) }}</td>
-								<td style="text-align:right;">
+								<td colspan="2" style="text-align:right;">
 									Total: {{ sale.SaleMaster_TotalSaleAmount }}<br>
 									Paid: {{ sale.SaleMaster_PaidAmount }}<br>
 									Due: {{ sale.SaleMaster_DueAmount }}
